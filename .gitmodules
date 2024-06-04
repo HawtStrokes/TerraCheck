@@ -1,0 +1,6 @@
+[submodule "External/serial"]
+	path = External/serial
+	url = https://github.com/wjwwood/serial.git
+[submodule "External/json"]
+	path = External/json
+	url = https://github.com/nlohmann/json.git
