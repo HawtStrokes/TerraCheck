@@ -12,9 +12,9 @@ TerraCheck is an approach to soil health assessment designed for field deploymen
 In a terminal, enter the following commands.
 
 ```plaintext
-git clone --recursive https://github.com/HawtStrokes/TerraCheck .git
+git clone --recursive https://github.com/HawtStrokes/TerraCheck.git
 cd TerraCheck/
-git submodule update --recursive --init
+git submodule update --init --recursive 
 ```
 
 ## Planned Features
