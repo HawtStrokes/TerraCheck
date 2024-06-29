@@ -4,3 +4,13 @@
 [submodule "External/json"]
 	path = External/json
 	url = https://github.com/nlohmann/json.git
+[submodule "External/imgui"]
+	path = External/imgui
+	url = https://github.com/ocornut/imgui.git
+	branch = docking
+[submodule "External/glfw"]
+	path = External/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "External/bluetooth-serial-port"]
+	path = External/bluetooth-serial-port
+	url = https://github.com/Agamnentzar/bluetooth-serial-port.git
