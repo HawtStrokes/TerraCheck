@@ -1,14 +1,16 @@
 #pragma once
+#include <string>
+
+// TODO: provide a celcius data rerepresentationm
 
 namespace TerraCheck
 {
 	struct Insights
 	{
-		float tempOptimality;
-		float frostRisk;
-		float heatStressRisk;
-		// float microbeRisk;
-		// float nutrientAvailabilityRisk;
+		double tempOptimality;
+		double frostRisk;
+		double heatStressRisk;
+		std::string note;
 	};
 
 	class Plant;
@@ -20,6 +22,6 @@ namespace TerraCheck
 
 	public:
 		static SoilHealthAnalyzer& Get();
-		Insights Analyze(const Plant& plant, float temp);
+		Insights Analyze(const std::string& plantName, double temp);
 	};
 }

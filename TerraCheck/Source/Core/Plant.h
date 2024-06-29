@@ -1,55 +1,36 @@
 #pragma once
-#include <iostream>
-#include <fstream>
-#include <string>
 
-#include <nlohmann/json.hpp>
+#include "nlohmann/json.hpp"
 
 namespace TerraCheck
 {
     class Plant
     {
     private:
-        nlohmann::json m_Data;
+        nlohmann::json m_PlantsData;
+        static Plant* m_Instance;
 
-        void Internal_LoadPlantData(const std::string& jsonFilePath)
-        {
-            std::ifstream file(jsonFilePath);
-            if (file.is_open())
-            {
-                file >> m_Data;
-                file.close();
-            }
-            else
-            {
-                std::cerr << "Error opening JSON file: " << jsonFilePath << std::endl;
-            }
-        }
+    private:
+        void Internal_LoadPlantData(const std::string& jsonFilePath);
+        Plant(const std::string& jsonFilePath);
 
     public:
-        Plant(const std::string& jsonFilePath)
-        {
-            Internal_LoadPlantData(jsonFilePath);
-        }
+        static void InitPlant(const std::string& plantFile);
+        static Plant& Get();
 
-        [[nodiscard]] double GetOptimalTempMin() const
-        {
-            return m_Data["optimalTempMin"];
-        }
+    public:
+        // nlohmann::json GetPlantData(const std::string& plantName);
 
-        [[nodiscard]] double GetOptimalTempMax() const
-        {
-            return m_Data["optimalTempMax"];
-        }
+        [[nodiscard]] std::vector<std::string> GetAllPlantNames() const;
 
-        [[nodiscard]] double GetFrostRisk() const
-        {
-            return m_Data["frostRisk"];
-        }
+        [[nodiscard]] double GetOptimalTempMin(const std::string& plantName) const;
 
-        [[nodiscard]] double GetHeatStressRisk() const
-        {
-            return m_Data["heatStressRisk"];
-        }
+        [[nodiscard]] double GetOptimalTempMax(const std::string& plantName) const;
+
+        [[nodiscard]] double GetFrostRisk(const std::string& plantName) const;
+
+        [[nodiscard]] double GetHeatStressRisk(const std::string& plantName) const;
+
+        [[nodiscard]] std::string GetNote(const std::string& plantName) const;
     };
 }
